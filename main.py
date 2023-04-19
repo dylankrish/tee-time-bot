@@ -1,10 +1,7 @@
 # Idle until a certain time in the day is reached
-
-import time
-import datetime
-
-
 def main():
+    import time
+    import datetime
     while True:
         now = datetime.datetime.now()
         if now.hour == 6 and now.minute == 00:
