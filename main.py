@@ -15,6 +15,17 @@ def main():
             print("Current time: " + str(now.hour) + ":" + str(now.minute))
             time.sleep(1)
 
-# def getTeeTime();
+def getTeeTime();
+    # Login
+    import requests
+
+    login_data = {
+        'p$lt$PageContent$pageplaceholder$p$lt$zoneRight$CHOLogin$LoginControl$ctl00$Login1$UserName': 'your_username_here',
+        'p$lt$PageContent$pageplaceholder$p$lt$zoneRight$CHOLogin$LoginControl$ctl00$Login1$Password': 'your_password_here'
+    }
+
+    login_url = 'https://www.stoningtoncountryclub.com/login.aspx'
+
+    response = requests.post(login_url, data=login_data)
 
 main()
