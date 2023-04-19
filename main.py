@@ -29,4 +29,5 @@ def getTeeTime():
 
     print(response)
 
-main()
+# TODO: This function is commented out for debugging purposes
+#main()
