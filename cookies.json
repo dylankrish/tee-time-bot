@@ -1,0 +1,91 @@
+[
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "expirationDate": 1696710393.657346,
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": "u53Rn3yM",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "ZHlsYW5rcmlzaA=="
+    },
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "expirationDate": 1696710393.65691,
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": "CMSCookieLevel",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1000"
+    },
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": "ASP.NET_SessionId",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "j3euyp1j3g53zx1krs1xnelf"
+    },
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "expirationDate": 1682395200.657296,
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": ".ASPXFORMSAUTH",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "A2394A75E497892A8CCDF423B601CBD4ECE95DD200EF32087A6823CB3BF0E6D82A84A92CE197E455F705300A4DF3B4F06EF8993A5702FEA4CE49446F696FBFB0C9C32B26642431F64D75DAC5A969F8D349AD1CC3F28F86C3C14996E5B70351B6284BAFFBB2E0B2814EA73827043A9DF93AF33CC84ED3F8AD05D4645CDD1B7927278B5373DD21FC9437B53D01EDC6CC0168457798"
+    },
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "expirationDate": 1696710160.723351,
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": "CMSPreferredCulture",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "en-US"
+    },
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "expirationDate": 1697425563.555868,
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": "CMSPreferredUICulture",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "en-us"
+    },
+    {
+        "domain": "www.stoningtoncountryclub.com",
+        "hostOnly": true,
+        "httpOnly": true,
+        "name": "JNS",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "2204543168.20480.0000"
+    }
+]
