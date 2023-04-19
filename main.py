@@ -15,7 +15,7 @@ def main():
 def getTeeTime():
     # Login
     import requests
-    import logininfo
+    from logininfo import username, password
 
 
     login_data = {
