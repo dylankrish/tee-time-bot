@@ -15,16 +15,8 @@ def main():
 def getTeeTime():
     # Login
     import requests
+    import logininfo
 
-    # grab username from file
-    usernameFile = open('username.txt', 'r')
-    username = usernameFile.read()
-    usernameFile.close()
-
-    # grab password from file
-    passwordFile = open('password.txt', 'r')
-    password = passwordFile.read()
-    passwordFile.close()
 
     login_data = {
         'p$lt$PageContent$pageplaceholder$p$lt$zoneRight$CHOLogin$LoginControl$ctl00$Login1$UserName': username,
