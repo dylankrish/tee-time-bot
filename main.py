@@ -38,4 +38,6 @@ def getTeeTime():
 
     response = requests.post(login_url, data=login_data)
 
+    print(response)
+
 main()
