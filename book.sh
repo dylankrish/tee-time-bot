@@ -1,5 +1,5 @@
 #!/bin/bash
-curl 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0' \
+curl f \
   -H 'Accept: application/json, text/plain, */*' \
   -H 'Accept-Language: en-US,en;q=0.9' \
   -H 'Connection: keep-alive' \
