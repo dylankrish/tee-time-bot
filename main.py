@@ -76,6 +76,7 @@ def getTeeTime():
 
     booking_url = 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
 
+    # TODO: Fix parantheses
     headers2 = {"Accept": "application/json, text/plain, */*",
                 "Accept-Language:": "en-US,en;q=0.9",
                 "Connection": "keep-alive",
