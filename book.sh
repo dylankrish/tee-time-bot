@@ -16,4 +16,4 @@ curl 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0' \
   -H 'sec-ch-ua-mobile: ?0' \
   -H 'sec-ch-ua-platform: "macOS"' \
   --data-raw '{"Mode":"Booking","BookingId":0,"OwnerId":1004130383,"editingBookingId":null,"Reservations":[{"ReservationId":0,"ReservationType":0,"FullName":"Dylan Krishnan","Transport":"0","Caddy":"false","Rentals":"","MemberId":1004130383}],"Holes":18,"StartingHole":"1","wait":false,"Allowed":null,"enabled":true,"startTime":null,"endTime":null,"Notes":""}' \
-  --compressed
+  -"-compressed
