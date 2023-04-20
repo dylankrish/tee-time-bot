@@ -15,6 +15,7 @@ def main():
 def getTeeTime():
     # Login 1
     import requests
+    import json
     from logininfo import username, password
 
 
@@ -79,12 +80,48 @@ def getTeeTime():
     # next we need to get the current user's ID
     # we can do this by making a GET request to 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
 
+    getcurrentuser_url = 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
+
+    headers3 = {"Accept": "application/json, text/plain, */*",
+                "Accept-Language": "en-US,en;q=0.5",
+                "Connection": "keep-alive",
+                "Cookie": "CMSPreferredCulture=" + cmspreferredculture + "; CMSCookieLevel=1000; CMSPreferredUICulture=en-us; .ASPXFORMSAUTH=" + aspxformsauth + "; ASP.NET_SessionId=" + sessionid + "; test=ok",
+                "Referer": "https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
+                "Sec-GPC": "1",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+                "sec-ch-ua": "\"Chromium\";v=\"112\", \"Brave\";v=\"112\", \"Not:A-Brand\";v=\"99\"",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "macOS"
+                }
+
+    response3 = requests.get(getcurrentuser_url, headers=headers3)
+
+    # parse the response to get the id, memberId, memberNumber, memberNumberSaved, fullName, firstName, and lastName
+    # set each of these to a variable
+
+    print(response3)
+
+    data3 = json.loads(response3.text)
+
+    id = data3['id']
+    memberId = data3['memberId']
+    memberNumber = data3['memberNumber']
+    memberNumberSaved = data3['memberNumberSaved']
+    fullName = data3['fullName']
+    firstName = data3['firstName']
+    lastName = data3['lastName']
+
+
+
     print(sessionid)
 
     booking_url = 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
 
     # TODO: Fix parantheses
-    headers3 = {"Accept": "application/json, text/plain, */*",
+    headers4 = {"Accept": "application/json, text/plain, */*",
                 "Accept-Language": "en-US,en;q=0.9",
                 "Connection": "keep-alive",
                 "Content-Type": "application/json;charset=utf-8",
@@ -103,7 +140,7 @@ def getTeeTime():
                 }
 
 
-    # response3 = requests.post(booking_url, headers=headers3)
+    # response4 = requests.post(booking_url, headers=headers3)
 
     # print(response.text)
     
