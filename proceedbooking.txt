@@ -1,0 +1,19 @@
+POST /api/v1/teetimes/CommitBooking/0 HTTP/1.1
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.5
+Connection: keep-alive
+Content-Length: 345
+Content-Type: application/json;charset=UTF-8
+Cookie: CMSPreferredCulture=en-US; ASP.NET_SessionId=qq4je5vq2lysu2ywczosfa3k; test=ok; CMSCookieLevel=1000; CMSPreferredUICulture=en-us; .ASPXFORMSAUTH=0A4F876379E79063C7DFE67284D44754935EAB3763F6B4613005270F2249D6A33DC377135C5C57149C466AA51519820C5202BD9861ECB10FDF6F40F5D10829EE18E95DFD78059EDAA7D83E1C706E8F318B0DD8EFD478FBD3C1A99D6B4ED1517EF65849C3C2498DC2EF0AD6F1882D32AF81018FB5AFC2C851A1CB26C36EFCB6FF341B36DCF2B91E918BCF915CB43BCA874D41D6FE; u53Rn3yM=ZHlsYW5rcmlzaA==; JNS=2976295104.20480.0000
+Host: www.stoningtoncountryclub.com
+Origin: https://www.stoningtoncountryclub.com
+Referer: https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Sec-GPC: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+sec-ch-ua: "Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
