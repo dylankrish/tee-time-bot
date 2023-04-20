@@ -37,7 +37,7 @@ def getTeeTime():
     sessionid = cookies['ASP.NET_SessionId']
     jns = cookies['JNS']
 
-    # now we need to get the ASPXFORMSAUTH cookie
+    # now we need to get the .ASPXFORMSAUTH cookie
     # we can do this by making a request to the 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx' page
 
     # next we need to get the current user's ID
