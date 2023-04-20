@@ -101,7 +101,7 @@ def getTeeTime():
 
     print(response.text)
     
-    # Get tee time
+    # Finally, let's book a tee time
     
 
 # TODO: This function is commented out for debugging purposes
