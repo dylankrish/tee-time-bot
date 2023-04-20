@@ -29,5 +29,10 @@ def getTeeTime():
 
     print(response)
 
+    # TODO: Get session ID
+
+    # Get tee time
+    
+
 # TODO: This function is commented out for debugging purposes
 #main()
