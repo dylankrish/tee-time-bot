@@ -27,10 +27,16 @@ def getTeeTime():
 
     response = requests.post(login_url, data=login_data)
 
+    cookies = response.cookies
+
+    print(cookies)
     print(response)
 
-    # TODO: Get session ID
+    # parse 'cookies' to get the value of the 'ASP.NET_SessionId' cookie and set it to the 'sessionid' variable
+    sessionid = cookies['ASP.NET_SessionId']
 
+    print(sessionid)
+    
     # Get tee time
     
 
