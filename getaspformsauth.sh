@@ -1,0 +1,21 @@
+curl 'https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Cache-Control: max-age=0' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: CMSPreferredCulture=en-US; ASP.NET_SessionId=qq4je5vq2lysu2ywczosfa3k; test=ok' \
+  -H 'Origin: https://www.stoningtoncountryclub.com' \
+  -H 'Referer: https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central' \
+  -H 'Sec-Fetch-Dest: document' \
+  -H 'Sec-Fetch-Mode: navigate' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-User: ?1' \
+  -H 'Sec-GPC: 1' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  --data-raw 'manScript_HiddenField=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKMTUyOTI4NDM3MA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAQ8WBB4FY2xhc3NkHgZhY3Rpb24FJy9sb2dpbi5hc3B4P1JldHVyblVybD0lMmZtZW1iZXItY2VudHJhbBYCAgcPZBYCZg8PFgQeCENzc0NsYXNzBQ9QYWdlUGxhY2Vob2xkZXIeBF8hU0ICAmQWAmYPZBYIZg9kFgICAg8PFgIeB1Zpc2libGVoZBYCZg9kFgICAw9kFgICAw8PZGRkAgIPZBYEAgIPDxYCHwVoZBYCZg9kFgICAw9kFgICAw8PZGRkAgMPZBYEAgEPFgIeBXN0eWxlBQ1kaXNwbGF5Om5vbmU7ZAIDDxYEHwYFDmRpc3BsYXk6YmxvY2s7HgdvbmNsaWNrBRtsb2NhdGlvbi5ocmVmPScvbG9naW4uYXNweCcWAgIDDw8WAh4EVGV4dAUMTWVtYmVyIExvZ2luZGQCBg9kFgJmD2QWAgICD2QWAmYPDxYEHwMFD1BhZ2VQbGFjZWhvbGRlch8EAgJkFgJmD2QWBAIBD2QWBgIBDw8WAh8FaGQWAmYPZBYCAgMPZBYCAgMPD2RkZAIDDw8WAh8FaGQWAmYPZBYCAgMPZBYCAgMPD2RkZAIFDw8WAh8FaGQWAmYPZBYCAgMPZBYCAgMPD2RkZAIHD2QWBGYPDxYCHwVoZBYCZg9kFgICAw9kFgICAw8PZGRkAgEPDxYCHhhHbG9iYWxBZG1pbmlzdHJhdG9yc09ubHloZBYCAgEPZBYCZg8PFgQeCnJlcXVpcmVTU0xoHhJhbGxvd0JsYW5rUGFzc3dvcmRnZBYCZg9kFgJmDzwrAAoBAA8WCh4SRGVzdGluYXRpb25QYWdlVXJsBQ8vbWVtYmVyLWNlbnRyYWweE1Zpc2libGVXaGVuTG9nZ2VkSW5nHgtGYWlsdXJlVGV4dAUwSW52YWxpZCB1c2VybmFtZSBvciBwYXNzd29yZC4gIFBsZWFzZSB0cnkgYWdhaW4uHghVc2VyTmFtZWUeDVJlbWVtYmVyTWVTZXRoZBYCZg9kFgQCAQ9kFgoCAw8PFgIfCGUWAh4LcGxhY2Vob2xkZXIFCFVzZXJuYW1lZAIFDw9kFgQfEQUIUGFzc3dvcmQeCm9ua2V5cHJlc3MFFENoZWNrQ2Fwc0xvY2soZXZlbnQpZAIHDxAPFgoeB0NoZWNrZWRoHwgFC1JlbWVtYmVyIG1lHwMFCGNoZWNrYm94HgdUb29sVGlwZR8EAgJkZGRkAgkPDxYEHgtOYXZpZ2F0ZVVybAUUfi9yZXNldHBhc3N3b3JkLmFzcHgfCAUPRm9yZ290IFBhc3N3b3JkZGQCCw8PFgIfCAUFTG9naW5kZAIDD2QWBAIFDw8WAh8IBYwBQW4gZW1haWwgaGFzIGJlZW4gc2VudCB0byB7MH0uIFdpdGhpbiBpdCB5b3Ugd2lsbCBmaW5kIGEgY29kZSB3aGljaCBuZWVkcyB0byBiZSBlbnRlcmVkIGludG8gdGhlIGZpZWxkIGJlbG93IGluIG9yZGVyIHRvIHN1Y2Nlc3NmdWxseSBsb2dpbi5kZAIHDw9kFgIfEgUUQ2hlY2tDYXBzTG9jayhldmVudClkAgoPZBYCZg8PFgIfBWhkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQVdcCRsdCRQYWdlQ29udGVudCRwYWdlcGxhY2Vob2xkZXIkcCRsdCR6b25lUmlnaHQkQ0hPTG9naW4kTG9naW5Db250cm9sJGN0bDAwJExvZ2luMSRSZW1lbWJlck1l0JYPnf4BjZap42Rg7qw6QzciThM%3D&lng=en-US&__VIEWSTATEGENERATOR=A5343185&__SCROLLPOSITIONX=0&__SCROLLPOSITIONY=0&p%24lt%24PageContent%24pageplaceholder%24p%24lt%24zoneRight%24CHOLogin%24LoginControl%24ctl00%24Login1%24UserName=dylankrish&p%24lt%24PageContent%24pageplaceholder%24p%24lt%24zoneRight%24CHOLogin%24LoginControl%24ctl00%24Login1%24Password=W6gev1YxBN*1nLm%40&p%24lt%24PageContent%24pageplaceholder%24p%24lt%24zoneRight%24CHOLogin%24LoginControl%24ctl00%24Login1%24RememberMe=on&p%24lt%24PageContent%24pageplaceholder%24p%24lt%24zoneRight%24CHOLogin%24LoginControl%24ctl00%24Login1%24LoginButton=Login&locale=en-US' \
+  --compressed

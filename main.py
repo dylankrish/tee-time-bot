@@ -24,10 +24,12 @@ def getTeeTime():
     }
 
     login_url = 'https://www.stoningtoncountryclub.com/login.aspx'
+    login_url2 = 'https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central'
 
     response = requests.post(login_url, data=login_data)
 
     cookies = response.cookies
+
 
     print(cookies)
     print(response)
@@ -38,7 +40,8 @@ def getTeeTime():
     jns = cookies['JNS']
 
     # now we need to get the .ASPXFORMSAUTH cookie
-    # we can do this by making a request to the 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx' page
+    # we can do this by making a request to 'https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central' page
+
 
     # next we need to get the current user's ID
     # we can do this by making a GET request to 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
@@ -59,15 +62,15 @@ def getTeeTime():
                 "Sec-Fetch-Site": "same-origin",
                 "Sec-GPC": "1",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
-                "sec-ch-ua": "\"Google Chrome\";v=\"112\", \"Chromium\";v=\"112\", \";Not A Brand\";v=\"99\"
+                # "sec-ch-ua": "\"Google Chrome\";v=\"112\", \"Chromium\";v=\"112\", \";Not A Brand\";v=\"99\""
                 "sec-ch-ua-mobile": "?0",
                 "sec-ch-ua-platform": "macOS",
                 # TODO: data raw
                 "--compressed"
-        }
+                }
 
 
-    response = requests.post(booking_url, headers=headers)
+    # response = requests.post(booking_url, headers=headers)
 
     print(response.text)
     
