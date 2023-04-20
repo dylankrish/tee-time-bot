@@ -13,7 +13,7 @@ def main():
             time.sleep(1)
 
 def getTeeTime():
-    # Login
+    # Login 1
     import requests
     from logininfo import username, password
 
@@ -41,7 +41,54 @@ def getTeeTime():
 
     # now we need to get the .ASPXFORMSAUTH cookie
     # we can do this by making a request to 'https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central' page
+    # we need to use the following headers:
+    # POST /login.aspx?ReturnUrl=%2fmember-central HTTP/1.1
+    # Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8
+    # Accept-Encoding: gzip, deflate, br
+    # Accept-Language: en-US,en;q=0.5
+    # Cache-Control: max-age=0
+    # Connection: keep-alive
+    # Content-Length: 2532
+    # Content-Type: application/x-www-form-urlencoded
+    # Cookie: CMSPreferredCulture=cmspreferredculture; ASP.NET_SessionId=sessionid; test=ok
+    # Host: www.stoningtoncountryclub.com
+    # Origin: https://www.stoningtoncountryclub.com
+    # Referer: https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central
+    # Sec-Fetch-Dest: document
+    # Sec-Fetch-Mode: navigate
+    # Sec-Fetch-Site: same-origin
+    # Sec-Fetch-User: ?1
+    # Sec-GPC: 1
+    # Upgrade-Insecure-Requests: 1
+    # User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36
+    # sec-ch-ua: "Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99"
+    # sec-ch-ua-mobile: ?0
+    # sec-ch-ua-platform: "macOS"
 
+    headers1 = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+                "Accept-Encoding": "gzip, deflate, br"
+                "Accept-Language": "en-US,en;q=0.5",
+                "Cache-Control": "max-age=0",
+                "Connection": "keep-alive",
+                "Content-Length": "2532",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cookie": "CMSPreferredCulture=" + cmspreferredculture + "; ASP.NET_SessionId=" + sessionid + "; test=ok",
+                "Host": "www.stoningtoncountryclub.com",
+                "Origin": "https://www.stoningtoncountryclub.com",
+                "Referer": "https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central",
+                "Sec-Fetch-Dest": "document",
+                "Sec-Fetch-Mode": "navigate",
+                "Sec-Fetch-Site": "same-origin",
+                "Sec-Fetch-User": "?1",
+                "Sec-GPC": "1",
+                "Upgrade-Insecure-Requests:" "1",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/
+                "sec-ch-ua": "Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "macOS"
+                }
+
+    response2 = requests.post(login_url2, data=login_data, headers=headers1)
 
     # next we need to get the current user's ID
     # we can do this by making a GET request to 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
@@ -50,7 +97,7 @@ def getTeeTime():
 
     booking_url = 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
 
-    headers = {"Accept": "application/json, text/plain, */*",
+    headers2 = {"Accept": "application/json, text/plain, */*",
                 "Accept-Language:": "en-US,en;q=0.9",
                 "Connection": "keep-alive",
                 "Content-Type": "application/json;charset=utf-8",
@@ -62,7 +109,7 @@ def getTeeTime():
                 "Sec-Fetch-Site": "same-origin",
                 "Sec-GPC": "1",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
-                # "sec-ch-ua": "\"Google Chrome\";v=\"112\", \"Chromium\";v=\"112\", \";Not A Brand\";v=\"99\""
+                "sec-ch-ua": "Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99",
                 "sec-ch-ua-mobile": "?0",
                 "sec-ch-ua-platform": "macOS",
                 # TODO: data raw
@@ -70,7 +117,7 @@ def getTeeTime():
                 }
 
 
-    # response = requests.post(booking_url, headers=headers)
+    response3 = requests.post(booking_url, headers=headers2)
 
     print(response.text)
     
