@@ -39,6 +39,8 @@ def getTeeTime():
     cmspreferredculture = cookies['CMSPreferredCulture']
     sessionid = cookies['ASP.NET_SessionId']
     jns = cookies['JNS']
+    aspxformsauth = cookies['.ASPXFORMSAUTH']
+
 
     # Login 2
     # now we need to get the .ASPXFORMSAUTH cookie
@@ -68,14 +70,14 @@ def getTeeTime():
                 "sec-ch-ua-platform": "macOS"
                 }
 
-    response2 = requests.post(login_url2, data=login_data, headers=headers2)
+    # response2 = requests.post(login_url2, data=login_data, headers=headers2)
 
-    cookies2 = response2.cookies
+    # cookies2 = response2.cookies
 
-    print(cookies2)
+    # print(cookies2)
 
     # parse 'cookies2' to get the value of the '.ASPXFORMSAUTH' cookie and set it to the 'aspxformsauth' variable
-    aspxformsauth = cookies2['.ASPXFORMSAUTH']
+    # aspxformsauth = cookies2['.ASPXFORMSAUTH']
 
     # next we need to get the current user's ID
     # we can do this by making a GET request to 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
