@@ -41,36 +41,57 @@ def getTeeTime():
     jns = cookies['JNS']
     print(jns)
     # aspxformsauth = cookies['.ASPXFORMSAUTH']
-    aspxformsauth = "F319A79AA03AD6BB90291BE5CDD2CA7661147F52FFE3902BE368C401BAE642DEDC4AE55B01EA74F9825CF3D4A43AF6799253926424432DA9C44713E9B8CF2D719D140853ACBD1F0FE193FD968D9C87C9F4767BBAC8F8333228F25710BEF8A22010DB9B89E288A487A91F2F750687AD2A8CDBD234425FF463FA095073B14773A20BF5E3E8919F54AE24AF4E7BACFE8189DD0820DF"
+    # Getting the aspxformsauth cookie is a special case. We need to make a request to the 'https://www.stoningtoncountryclub.com/login.aspx?' page, but we need to only send the sessionid, cmspreferredculture, and test=ok cookie
+    # In theory, we should be able to get the aspxformsauth cookie from the response of this request.
+    # Below is an implementation for this
 
+    # Headers for the request should be as follows:
+    # Origin: https://www.stoningtoncountryclub.com
+    # Referer: https://www.stoningtoncountryclub.com/login.aspx
+    # Cookie: CMSPreferredCulture=; ASP.NET_SessionId=; test=ok
+    headers2 = {
+        "Origin": "https://www.stoningtoncountryclub.com",
+        "Referer": "https://www.stoningtoncountryclub.com/login.aspx",
+        "Cookie": "CMSPreferredCulture=" + cmspreferredculture + "; ASP.NET_SessionId=" + sessionid + "; test=ok",
+    }
+
+    response2 = requests.post(login_url2, data=login_data, headers=headers2)
+
+    cookies2 = response2.cookies
+
+    print(cookies2)
+
+    # parse 'cookies2' to get the value of the '.ASPXFORMSAUTH' cookie and set it to the 'aspxformsauth' variable
+    aspxformsauth = cookies2['.ASPXFORMSAUTH']
+    print(aspxformsauth)
 
     # Login 2
     # now we need to get the .ASPXFORMSAUTH cookie
     # we can do this by making a request to 'https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central' page
 
-    # TODO: Fix parantheses
-    headers2 = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-                "Accept-Encoding": "gzip, deflate, br",
-                "Accept-Language": "en-US,en;q=0.5",
-                "Cache-Control": "max-age=0",
-                "Connection": "keep-alive",
-                "Content-Length": "2532",
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Cookie": "CMSPreferredCulture=" + cmspreferredculture + "; ASP.NET_SessionId=" + sessionid + "; test=ok",
-                "Host": "www.stoningtoncountryclub.com",
-                "Origin": "https://www.stoningtoncountryclub.com",
-                "Referer": "https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central",
-                "Sec-Fetch-Dest": "document",
-                "Sec-Fetch-Mode": "navigate",
-                "Sec-Fetch-Site": "same-origin",
-                "Sec-Fetch-User": "?1",
-                "Sec-GPC": "1",
-                "Upgrade-Insecure-Requests": "1",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/",
-                "sec-ch-ua": "\"Chromium\";v=\"112\", \"Brave\";v=\"112\", \"Not:A-Brand\";v=\"99\"",
-                "sec-ch-ua-mobile": "?0",
-                "sec-ch-ua-platform": "macOS"
-                }
+    # # TODO: Fix parantheses
+    # headers2 = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+    #             "Accept-Encoding": "gzip, deflate, br",
+    #             "Accept-Language": "en-US,en;q=0.5",
+    #             "Cache-Control": "max-age=0",
+    #             "Connection": "keep-alive",
+    #             "Content-Length": "2532",
+    #             "Content-Type": "application/x-www-form-urlencoded",
+    #             "Cookie": "CMSPreferredCulture=" + cmspreferredculture + "; ASP.NET_SessionId=" + sessionid + "; test=ok",
+    #             "Host": "www.stoningtoncountryclub.com",
+    #             "Origin": "https://www.stoningtoncountryclub.com",
+    #             "Referer": "https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central",
+    #             "Sec-Fetch-Dest": "document",
+    #             "Sec-Fetch-Mode": "navigate",
+    #             "Sec-Fetch-Site": "same-origin",
+    #             "Sec-Fetch-User": "?1",
+    #             "Sec-GPC": "1",
+    #             "Upgrade-Insecure-Requests": "1",
+    #             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/",
+    #             "sec-ch-ua": "\"Chromium\";v=\"112\", \"Brave\";v=\"112\", \"Not:A-Brand\";v=\"99\"",
+    #             "sec-ch-ua-mobile": "?0",
+    #             "sec-ch-ua-platform": "macOS"
+    #             }
 
     # response2 = requests.post(login_url2, data=login_data, headers=headers2)
 
