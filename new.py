@@ -38,9 +38,14 @@ def getTeeTime():
 
     # we should use the cookies from the login request
 
-    response3 = requests.get(getcurrentuser_url, cookies=cookies)
-    
-    data3 = json.loads(response3.text)
+    response2 = requests.get(getcurrentuser_url, cookies=cookies)
+    cookies = response2.cookies
+
+    print(response2)
+
+    data3 = json.loads(response2.text)
+
+    print(data3)
 
     id = data3['id']
     memberId = data3['memberId']
