@@ -30,6 +30,18 @@ def getTeeTime():
 
     cookies = response.cookies
 
+    print(cookies)
+
+    emailupdate_url = 'https://www.stoningtoncountryclub.com/UserEmailUpdate.aspx'
+
+    response15 = requests.get(emailupdate_url, cookies=cookies, data=login_data)
+
+    print(cookies)
+
+    # list the tee times
+    response2 = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20230517/1548/0/null/false', cookies=cookies)
+    # print(response2.text)
+
     # get the current user's ID
     # we can do this by making a GET request to 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
 
@@ -61,10 +73,10 @@ def getTeeTime():
     #   - memberId: the current user's member ID
     #   - memberNumber: the current user's member number
 
-    booking_url = 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
+    # booking_url = 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
 
-    dataToSend = {"Mode":"Booking","BookingId":0,"OwnerId":1004130383,"editingBookingId":"null","Reservations":[{"ReservationId":0,"ReservationType":0,"FullName":"Dylan Krishnan","Transport":"0","Caddy":"false","Rentals":"","MemberId":1004130383}],"Holes":18,"StartingHole":"1","wait":"false","Allowed":"null","enabled":"true","startTime":"null","endTime":"null","Notes":""}
+    # dataToSend = {"Mode":"Booking","BookingId":0,"OwnerId":1004130383,"editingBookingId":"null","Reservations":[{"ReservationId":0,"ReservationType":0,"FullName":"Dylan Krishnan","Transport":"0","Caddy":"false","Rentals":"","MemberId":1004130383}],"Holes":18,"StartingHole":"1","wait":"false","Allowed":"null","enabled":"true","startTime":"null","endTime":"null","Notes":""}
 
-    response3 = requests.post(booking_url, data=dataToSend, cookies=cookies)
+    # response3 = requests.post(booking_url, data=dataToSend, cookies=cookies)
 
-    print(response3.text)
+    # print(response3.text)
