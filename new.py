@@ -25,7 +25,6 @@ def getTeeTime():
     }
 
     login_url = 'https://www.stoningtoncountryclub.com/login.aspx'
-    login_url2 = 'https://www.stoningtoncountryclub.com/login.aspx?ReturnUrl=%2fmember-central'
 
     response = requests.post(login_url, data=login_data)
 
