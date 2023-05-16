@@ -37,22 +37,22 @@ def getTeeTime():
 
     # we should use the cookies from the login request
 
-    response2 = requests.get(getcurrentuser_url, cookies=cookies)
-    cookies = response2.cookies
+    # response2 = requests.get(getcurrentuser_url, cookies=cookies)
+    # cookies = response2.cookies
 
-    print(response2)
+    # print(response2)
 
-    data3 = json.loads(response2.text)
+    # data3 = json.loads(response2.text)
 
-    print(data3)
+    # print(data3)
 
-    id = data3['id']
-    memberId = data3['memberId']
-    memberNumber = data3['memberNumber']
-    memberNumberSaved = data3['memberNumberSaved']
-    fullName = data3['fullName']
-    firstName = data3['firstName']
-    lastName = data3['lastName']
+    # id = data3['id']
+    # memberId = data3['memberId']
+    # memberNumber = data3['memberNumber']
+    # memberNumberSaved = data3['memberNumberSaved']
+    # fullName = data3['fullName']
+    # firstName = data3['firstName']
+    # lastName = data3['lastName']
 
     # Now, lets book a tee time for the current user at 6:00 AM on 5/15/2023
     # We can do this by making a POST request to 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
@@ -60,3 +60,11 @@ def getTeeTime():
     #   - id: the current user's ID
     #   - memberId: the current user's member ID
     #   - memberNumber: the current user's member number
+
+    booking_url = 'https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0'
+
+    dataToSend = {"Mode":"Booking","BookingId":0,"OwnerId":1004130383,"editingBookingId":"null","Reservations":[{"ReservationId":0,"ReservationType":0,"FullName":"Dylan Krishnan","Transport":"0","Caddy":"false","Rentals":"","MemberId":1004130383}],"Holes":18,"StartingHole":"1","wait":"false","Allowed":"null","enabled":"true","startTime":"null","endTime":"null","Notes":""}
+
+    response3 = requests.post(booking_url, data=dataToSend, cookies=cookies)
+
+    print(response3.text)
