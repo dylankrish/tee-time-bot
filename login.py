@@ -12,4 +12,7 @@ login_url = 'https://www.stoningtoncountryclub.com/login.aspx'
 response = requests.post(login_url, data=login_data)
 cookies = response.cookies
 
-print(cookies)
+print(response.cookies)
+
+emailupdate_url = 'https://www.stoningtoncountryclub.com/UserEmailUpdate.aspx'
+
