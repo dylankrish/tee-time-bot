@@ -59,17 +59,17 @@ def getTeeTime():
         value = cookie['value']
         cookies_dict[name] = value
 
-    cookies = json.load(cookies_dict)
-
-    print(cookies)
+    print(cookies_dict)
 
     emailupdate_url = 'https://www.stoningtoncountryclub.com/UserEmailUpdate.aspx'
 
+    getcurrentuser_url = 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
+
     # response15 = requests.get(emailupdate_url, cookies=cookies, data=login_data)
     print()
-    currentUser = requests.get(getcurrentuser_url, cookies=cookies)
+    currentUser = requests.get(getcurrentuser_url, cookies=cookies_dict)
     print()
-    print(currentUser.text())
+    print(currentUser.json())
 
     # print(cookies)
 
@@ -79,8 +79,6 @@ def getTeeTime():
 
     # get the current user's ID
     # we can do this by making a GET request to 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
-
-    getcurrentuser_url = 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
 
     # we should use the cookies from the login request
 
