@@ -70,6 +70,12 @@ def getTeeTime():
     currentUser = requests.get(getcurrentuser_url, cookies=cookies_dict)
     print(currentUser.json())
 
+    # get available dates from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableDates
+
+    availabledates = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableDates', cookies=cookies_dict)
+
+    # get available teetimes from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20240625/1548;1657/0/null/false
+
     # print(cookies)
 
     # list the tee times
