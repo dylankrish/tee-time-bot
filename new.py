@@ -25,6 +25,8 @@ def getTeeTime():
     from selenium.webdriver.chrome.service import Service
     from logininfo import username, password
 
+    courseID = 1548
+
     driver = webdriver.Chrome()
 
 
