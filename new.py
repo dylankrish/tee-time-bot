@@ -62,12 +62,8 @@ def getTeeTime():
 
     print(cookies_dict)
 
-    emailupdate_url = 'https://www.stoningtoncountryclub.com/UserEmailUpdate.aspx'
-
-    getcurrentuser_url = 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
-
     # response15 = requests.get(emailupdate_url, cookies=cookies, data=login_data)
-    currentUser = requests.get(getcurrentuser_url, cookies=cookies_dict)
+    currentUser = requests.get('https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser', cookies=cookies_dict)
     print(currentUser.json())
 
     # get available dates from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableDates
