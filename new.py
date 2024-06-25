@@ -13,11 +13,9 @@ def main():
             time.sleep(1)
 
 def getTeeTime():
-    print('Start')
     # Login
     import requests
     import json
-    print('Init Selenium')
     from selenium import webdriver
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import Select
@@ -25,10 +23,8 @@ def getTeeTime():
     from selenium.webdriver.support import expected_conditions as EC
     from selenium.webdriver import ActionChains
     from selenium.webdriver.chrome.service import Service
-    print('Pull logininfo')
     from logininfo import username, password
 
-    print('Start webdriver')
     driver = webdriver.Chrome()
 
 
@@ -43,7 +39,6 @@ def getTeeTime():
     # response = requests.post(login_url, data=login_data)
 
     # cookies = response.cookies
-    print('Get login page')
     driver.get(login_url)
 
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, 'p_lt_PageContent_pageplaceholder_p_lt_zoneRight_CHOLogin_LoginControl_ctl00_Login1_UserName')))
@@ -70,9 +65,7 @@ def getTeeTime():
     getcurrentuser_url = 'https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser'
 
     # response15 = requests.get(emailupdate_url, cookies=cookies, data=login_data)
-    print()
     currentUser = requests.get(getcurrentuser_url, cookies=cookies_dict)
-    print()
     print(currentUser.json())
 
     # print(cookies)
