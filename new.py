@@ -90,7 +90,10 @@ def getTeeTime():
     teeSheetTimeID = ''
 
     for i in teeTimes:
+        print(i)
+        if i == 'teeSheet':
             if i['teeTime'] == teeTime:
+                # TODO: backtrack to teeSheetTimeID
                 teeSheetTimeID = i['teeSheetTimeId']
                 break
 
