@@ -25,8 +25,8 @@ def getTeeTime():
     from selenium.webdriver.chrome.service import Service
     from datetime import datetime
     from logininfo import username, password
-
-    courseID = 1548
+    # course id is 1548
+    teeTime = '08:00:00'
 
     driver = webdriver.Chrome()
 
@@ -62,11 +62,11 @@ def getTeeTime():
         cookies_dict[name] = value
     driver.close()
 
-    print(cookies_dict)
+    # print(cookies_dict)
 
     # response15 = requests.get(emailupdate_url, cookies=cookies, data=login_data)
     currentUser = requests.get('https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser', cookies=cookies_dict)
-    print(currentUser.json())
+    # print(currentUser.json())
 
     # get available dates from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableDates
 
@@ -75,14 +75,15 @@ def getTeeTime():
 
     current_date = datetime.now()
     formatted_date = current_date.strftime("%Y%m%d")
-    print(formatted_date)
+    # print(formatted_date)
 
     # get available teetimes from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20240625/1548;1657/0/null/false
-    available_teetimes = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/' + formatted_date + '/1548;1657/0/null/false', cookies=cookies_dict,
+    available_teetimes = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/' + formatted_date + '/1548/0/null/false', cookies=cookies_dict,
         headers={
             'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
         })
     print(available_teetimes.json())
+
     # print(cookies)
 
     # list the tee times
