@@ -82,7 +82,8 @@ def getTeeTime():
         headers={
             'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
         })
-    print(available_teetimes.json())
+    teeTimes = available_teetimes.json()
+
 
     # print(cookies)
 
