@@ -28,7 +28,10 @@ def getTeeTime():
     # course id is 1548
     teeTime = '08:00:00'
 
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--enable-features=WebContentsForceDark")
+
+    driver = webdriver.Chrome(options=options)
 
 
     # login_data = {
