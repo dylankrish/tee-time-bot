@@ -84,6 +84,14 @@ def getTeeTime():
         })
     teeTimes = available_teetimes.json()
 
+    teeSheetTimeID = ''
+
+    for i in teeTimes:
+            if i['teeTime'] == teeTime:
+                teeSheetTimeID = i['teeSheetTimeId']
+                break
+
+    print('Found: ' + teeSheetTimeID)
 
     # print(cookies)
 
