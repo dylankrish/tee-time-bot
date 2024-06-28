@@ -23,6 +23,7 @@ from logininfo import username, password
 # Idle until a certain time in the day is reached
 def main():
     if waitForWeekend:
+        print('Waiting for the weekend')
         # check if today is Saturday (5) or Sunday (6)
         while True:
             today = datetime.today().weekday()
