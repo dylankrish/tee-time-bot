@@ -194,8 +194,26 @@ def getTeeTime():
         print('Course: ' + course)
         print('Booking ID: ' + bookingID)
         print('Confirmation Number' + confirmationNumber)
+        if enableSMTP:
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+            from email.mime.application import MIMEApplication
+            from logininfo import smtpUser, smtpPwsd, smtpServer, smtpPort
+            message = f"""
+            {firstName} has been booked a tee time with the following details:
+
+            Name: {firstName} {lastName}
+            Course: {course}
+            Time: {teeTime}
+            Date: {pretty_date}
+            Confirmation Number: {confirmationNumber}
+            Booking ID: {bookingID}
+            """
     else:
         print('Failed to book')
         print(booking.json())
+        errorMessage = (booking.json())['errorMessage']
+
 
 main()
