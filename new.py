@@ -1,20 +1,24 @@
 # Config
-timeToBook = '11:30' # what time the script should book
+timeToBook = '11:30' # what time the script should book, ex: 08:30 for 8:30AM
 daysAfter = 6
-runTimeH = 6 # when the script should run, ex: 6 for 6:00 AM
-runTimeM = 00 # ex: 30 for 6:30 AM
+waitForRunTime = False
+runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM
+runTimeM = 58 # ex: 30 for 6:30 AM
 
 # Idle until a certain time in the day is reached
 def main():
-    import time
-    import datetime
-    print('Waiting for ' + runTimeH + ':' + runTimeM)
-    while True:
-        now = datetime.datetime.now()
-        if now.hour == runTimeH and now.minute == runTimeM:
-            break
-        else:
-            time.sleep(1)
+    if waitForRunTime:
+        import time
+        import datetime
+        print('Waiting for ' + runTimeH + ':' + runTimeM)
+        while True:
+            now = datetime.datetime.now()
+            if now.hour == runTimeH and now.minute == runTimeM:
+                getTeeTime()
+            else:
+                time.sleep(1)
+    else:
+        getTeeTime()
 
 def getTeeTime():
     # Login
