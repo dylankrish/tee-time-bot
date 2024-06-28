@@ -1,15 +1,18 @@
+# Config
+timeToBook = '08:00' # what time the script should book
+daysAfter = 7
+runTime = 6 # when the script should run, ex: 6 for 6:00 AM
+
 # Idle until a certain time in the day is reached
 def main():
     import time
     import datetime
+    print('Waiting for ' + runTime + ':00')
     while True:
         now = datetime.datetime.now()
-        if now.hour == 6 and now.minute == 00:
-            print("It's 6AM!")
+        if now.hour == runTime and now.minute == 00:
             break
         else:
-            print("It's not 6AM yet.")
-            print("Current time: " + str(now.hour) + ":" + str(now.minute))
             time.sleep(1)
 
 def getTeeTime():
@@ -25,15 +28,11 @@ def getTeeTime():
     from selenium.webdriver.chrome.service import Service
     from datetime import datetime, timedelta
     from logininfo import username, password
-    # course id is 1548
-    teeTime = '08:00:00'
-    daysAfter = 7
-
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
-
     driver = webdriver.Chrome(options=options)
 
+    teeTime = timeToBook + ':00'
 
     # login_data = {
         # 'p$lt$PageContent$pageplaceholder$p$lt$zoneRight$CHOLogin$LoginControl$ctl00$Login1$UserName': username,
@@ -90,7 +89,7 @@ def getTeeTime():
     current_date = datetime.now()
     days_later = current_date + timedelta(days=daysAfter)
     formatted_date = days_later.strftime("%Y%m%d")
-    formatted_date_alt = days_later.strftime('%Y-%m-%dT06:00:00')
+    pretty_date = days_later.strftime('%A, %B %d')
     # print(formatted_date)
 
     # get available teetimes from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20240625/1548;1657/0/null/false
@@ -118,6 +117,8 @@ def getTeeTime():
 
 
     print('Tee Sheet ID: ' + str(teeSheetTimeID))
+    print('Date: ' + pretty_date)
+    print('Time: ' + teeTime)
 
     # print(cookies)
 
