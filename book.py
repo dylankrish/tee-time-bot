@@ -142,7 +142,9 @@ def getTeeTime():
             'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
         })
 
-    print(proceed.text)
+    if proceed.status_code != 200:
+        print('Failed to proceed')
+        proceed.json()
 
     booking = requests.post('https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0', cookies=cookies_dict,
         headers={
@@ -170,7 +172,15 @@ def getTeeTime():
             "AllowJoinUs": False
         })
 
-    print(booking.status_code)
-    print(booking.json())
+    print("Booking: " + str(booking.status_code))
+
+    if booking.status_code == 200:
+        print('Booked!')
+        print('Course: ' + (booking.json()['data'])['course'])
+        print('Booking ID: ' + (booking.json()['data'])['bookingId'])
+        print('Confirmation Number' + (booking.json()['data'])['confirmationNumber'])
+    else:
+        print('Failed to book')
+        print(booking.json())
 
 main()
