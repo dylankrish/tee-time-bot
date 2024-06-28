@@ -10,7 +10,7 @@ def main():
     if waitForRunTime:
         import time
         import datetime
-        print('Waiting for ' + runTimeH + ':' + runTimeM)
+        print('Waiting for ' + str(runTimeH) + ':' + str(runTimeM))
         while True:
             now = datetime.datetime.now()
             if now.hour == runTimeH and now.minute == runTimeM:
