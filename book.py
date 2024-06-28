@@ -17,7 +17,7 @@ def main():
             if now.hour == runTimeH and now.minute == runTimeM:
                 getTeeTime()
             else:
-                time.sleep(1)
+                time.sleep(5)
     else:
         getTeeTime()
 
