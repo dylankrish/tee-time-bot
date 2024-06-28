@@ -69,7 +69,16 @@ def getTeeTime():
 
     # response15 = requests.get(emailupdate_url, cookies=cookies, data=login_data)
     currentUser = requests.get('https://www.stoningtoncountryclub.com/api/v1/GetCurrentUser', cookies=cookies_dict)
-    # print(currentUser.json())
+
+    firstName = (currentUser.json()['data'])['firstName']
+    lastName = (currentUser.json()['data'])['lastName']
+    memberID = (currentUser.json()['data'])['memberId']
+    memberNumber = (currentUser.json()['data'])['memberNumber']
+
+    print(firstName + ' ' + lastName)
+    print('Member ID: ' + str(memberID))
+    print('Member Number: ' + str(memberNumber))
+
 
     # get available dates from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableDates
 
@@ -85,19 +94,20 @@ def getTeeTime():
         headers={
             'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
         })
-    teeTimes = available_teetimes.json()
+    teeTimes = (available_teetimes.json()['data'])['teeSheet']
+
+    print(teeTimes)
 
     teeSheetTimeID = ''
 
     for i in teeTimes:
         print(i)
-        if i == 'teeSheet':
-            if i['teeTime'] == teeTime:
-                # TODO: backtrack to teeSheetTimeID
-                teeSheetTimeID = i['teeSheetTimeId']
-                break
+        if i['teeTime'] == teeTime:
+            # TODO: backtrack to teeSheetTimeID
+            teeSheetTimeID = i['teeSheetTimeId']
+            break
 
-    print('Found: ' + teeSheetTimeID)
+    print('Found: ' + str(teeSheetTimeID))
 
     # print(cookies)
 
