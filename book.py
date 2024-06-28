@@ -18,7 +18,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime, timedelta
-from logininfo import username, password
 
 # Idle until a certain time in the day is reached
 def main():
@@ -43,6 +42,8 @@ def main():
         getTeeTime()
 
 def getTeeTime():
+    from logininfo import username, password
+
     print("Running")
 
     # Login
