@@ -1,9 +1,9 @@
 import requests
+import sys
 
 bookingid = sys.argv[1]
 
 # BEGIN LOGIN
-import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
