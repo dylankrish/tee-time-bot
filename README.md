@@ -8,7 +8,7 @@ pip install -r requirements.txt
 ```
 cp logininfotemplate.py logininfo.py
 ```
-- Edit logininfo.py with credentials
+Edit logininfo.py with credentials. To run:
 ```
 python3 book.py
 ```
