@@ -1,16 +1,17 @@
 # Config
 timeToBook = '11:30' # what time the script should book
 daysAfter = 6
-runTime = 6 # when the script should run, ex: 6 for 6:00 AM
+runTimeH = 6 # when the script should run, ex: 6 for 6:00 AM
+runTimeM = 00 # ex: 30 for 6:30 AM
 
 # Idle until a certain time in the day is reached
 def main():
     import time
     import datetime
-    print('Waiting for ' + runTime + ':00')
+    print('Waiting for ' + runTimeH + ':' + runTimeM)
     while True:
         now = datetime.datetime.now()
-        if now.hour == runTime and now.minute == 00:
+        if now.hour == runTimeH and now.minute == runTimeM:
             break
         else:
             time.sleep(1)
