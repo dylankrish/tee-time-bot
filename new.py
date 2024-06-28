@@ -106,12 +106,19 @@ def getTeeTime():
 
     for i in teeTimes:
         if i['teeTime'] == teeTime:
-            if (i['teeSheetKey'])['dateOfAvailability'] == formatted_date_alt:
+            if (i['teeSheetBank']['teeSheetKey'])['dateOfAvailability'] == formatted_date_alt:
                 # TODO: check date
                 teeSheetTimeID = i['teeSheetTimeId']
                 break
 
-    print('Found tee time!')
+
+    if teeSheetTimeID != '':
+        print('Found tee time!')
+    else:
+        print('Could not find tee time')
+        exit()
+
+
     print('Tee Sheet ID: ' + str(teeSheetTimeID))
 
     # print(cookies)
