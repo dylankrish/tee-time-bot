@@ -1,12 +1,12 @@
 # Config
-waitForHour = True # wait for the hour, ex: if the script runs at 5:58 and is set to wait for the hour, it will wait for 6AM
-waitForWeekend = True # only book on weekends (saturday and sunday)
-timeToBook = '08:00' # what time the script should book, ex: 08:30 for 8:30AM
+waitForHour = False # wait for the hour, ex: if the script runs at 5:58 and is set to wait for the hour, it will wait for 6AM
+waitForWeekend = False # only book on weekends (saturday and sunday)
+timeToBook = '11:30' # what time the script should book, ex: 08:30 for 8:30AM
 daysAfter = 7
-waitForRunTime = True
+waitForRunTime = False
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM. only applicable if waitForRunTime is enabled
 runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login. only applicable if waitForRunTime is enabled
-enableSMTP = False # receieve email summaries when a tee time is booked, credentials must be configured in logininfo.py
+enableSMTP = True # receieve email summaries when a tee time is booked, credentials must be configured in logininfo.py
 
 
 import requests
@@ -35,7 +35,7 @@ def main():
     if waitForRunTime:
         print('Waiting for ' + str(runTimeH) + ':' + str(runTimeM))
         while True:
-            now = datetime.datetime.now()
+            now = datetime.now()
             if now.hour == runTimeH and now.minute == runTimeM:
                 getTeeTime()
             else:
@@ -157,6 +157,24 @@ def getTeeTime():
     if proceed.status_code != 200:
         print('Failed to proceed')
         proceed.json()
+        if enableSMTP:
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+            from email.mime.application import MIMEApplication
+            from logininfo import smtpUser, smtpPswd, smtpServer, smtpPort
+            message = f"""
+Unfortunately there was an error when booking your tee time for {timeToBook}.
+
+"{errorMessage}"
+            """
+
+            msg.attach(MIMEText(message, 'plain'))
+            server = smtplib.SMTP(smtpServer,smtpPort)
+            server.starttls()
+            server.login(smtpUser,smtpPswd)
+            server.sendmail(smtpUser,memberEmail,msg.as_string())
+            server.quit()
 
     booking = requests.post('https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0', cookies=cookies_dict,
         headers={
@@ -191,29 +209,60 @@ def getTeeTime():
         bookingID = (booking.json()['data'])['bookingId']
         confirmationNumber = (booking.json()['data'])['confirmationNumber']
         print('Booked!')
-        print('Course: ' + course)
-        print('Booking ID: ' + bookingID)
-        print('Confirmation Number' + confirmationNumber)
+        print('Course: ' + str(course))
+        print('Booking ID: ' + str(bookingID))
+        print('Confirmation Number' + str(confirmationNumber))
         if enableSMTP:
             import smtplib
             from email.mime.text import MIMEText
             from email.mime.multipart import MIMEMultipart
             from email.mime.application import MIMEApplication
-            from logininfo import smtpUser, smtpPwsd, smtpServer, smtpPort
+            from logininfo import smtpUser, smtpPswd, smtpServer, smtpPort
             message = f"""
-            {firstName} has been booked a tee time with the following details:
+{firstName} has been booked a tee time with the following details:
 
-            Name: {firstName} {lastName}
-            Course: {course}
-            Time: {teeTime}
-            Date: {pretty_date}
-            Confirmation Number: {confirmationNumber}
-            Booking ID: {bookingID}
+Name: {firstName} {lastName}
+Course: {course}
+Time: {timeToBook}
+Date: {pretty_date}
+Confirmation Number: {confirmationNumber}
+Booking ID: {bookingID}
             """
+            msg = MIMEMultipart()
+            msg['Subject'] = "Tee Time Booked for " + str(timeToBook)
+            msg['From'] = smtpUser
+            msg['To'] = memberEmail
+            msg.attach(MIMEText(message, 'plain'))
+            server = smtplib.SMTP(smtpServer,smtpPort)
+            server.starttls()
+            server.login(smtpUser,smtpPswd)
+            server.sendmail(smtpUser,memberEmail,msg.as_string())
+            server.quit()
     else:
         print('Failed to book')
         print(booking.json())
         errorMessage = (booking.json())['errorMessage']
+        if enableSMTP:
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+            from email.mime.application import MIMEApplication
+            from logininfo import smtpUser, smtpPswd, smtpServer, smtpPort
+            message = f"""
+Unfortunately there was an error when booking your tee time for {timeToBook}.
+
+"{errorMessage}"
+            """
+            msg = MIMEMultipart()
+            msg['Subject'] = "Unable to book " + str(timeToBook) + " tee time"
+            msg['From'] = smtpUser
+            msg['To'] = memberEmail
+            msg.attach(MIMEText(message, 'plain'))
+            server = smtplib.SMTP(smtpServer,smtpPort)
+            server.starttls()
+            server.login(smtpUser,smtpPswd)
+            server.sendmail(smtpUser,memberEmail,msg.as_string())
+            server.quit()
 
 
 main()
