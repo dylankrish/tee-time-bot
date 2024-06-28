@@ -6,6 +6,19 @@ waitForRunTime = False
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM
 runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login
 
+import requests
+import json
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ActionChains
+from selenium.webdriver.chrome.service import Service
+from datetime import datetime, timedelta
+from logininfo import username, password
+
 # Idle until a certain time in the day is reached
 def main():
     if waitForRunTime:
@@ -22,22 +35,9 @@ def main():
         getTeeTime()
 
 def getTeeTime():
-    # Login
-    import requests
-    import json
-    import time
-    from selenium import webdriver
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import Select
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from selenium.webdriver import ActionChains
-    from selenium.webdriver.chrome.service import Service
-    from datetime import datetime, timedelta
-    from logininfo import username, password
-
     print("Running")
 
+    # Login
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
