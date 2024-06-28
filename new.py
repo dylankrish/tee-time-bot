@@ -1,7 +1,7 @@
 # Config
 timeToBook = '11:30' # what time the script should book, ex: 08:30 for 8:30AM
 daysAfter = 6
-waitForRunTime = False
+waitForRunTime = True
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM
 runTimeM = 58 # ex: 30 for 6:30 AM
 
@@ -206,4 +206,4 @@ def getTeeTime():
 
     # print(response3.text)
 
-getTeeTime()
+main()
