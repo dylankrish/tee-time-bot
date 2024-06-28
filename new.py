@@ -1,6 +1,6 @@
 # Config
-timeToBook = '08:00' # what time the script should book
-daysAfter = 7
+timeToBook = '11:30' # what time the script should book
+daysAfter = 6
 runTime = 6 # when the script should run, ex: 6 for 6:00 AM
 
 # Idle until a certain time in the day is reached
@@ -120,6 +120,42 @@ def getTeeTime():
     print('Date: ' + pretty_date)
     print('Time: ' + teeTime)
 
+    # proceed booking
+    proceed = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/ProceedBooking/' + str(teeSheetTimeID), cookies=cookies_dict,
+        headers={
+            'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
+        })
+
+    print(proceed.text)
+
+    booking = requests.post('https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0', cookies=cookies_dict,
+        headers={
+            'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
+        },
+        json={
+            "Mode": "Booking",
+            "BookingId": 0,
+            "OwnerId": memberID,
+            "editingBookingId": None,
+            "Reservations": [
+                {"ReservationId": 0, "ReservationType": 0, "FullName": firstName + " " + lastName, "Transport": "0", "Caddy": "false", "Rentals": "", "MemberId": memberID},
+                {"ReservationId": 0, "ReservationType": 2, "FullName": "TBD", "Transport": "0", "Caddy": "false", "Rentals": ""},
+                {"ReservationId": 0, "ReservationType": 2, "FullName": "TBD", "Transport": "0", "Caddy": "false", "Rentals": ""},
+                {"ReservationId": 0, "ReservationType": 2, "FullName": "TBD", "Transport": "0", "Caddy": "false", "Rentals": ""}
+            ],
+            "Holes": 18,
+            "StartingHole": "1",
+            "wait": False,
+            "Allowed": None,
+            "enabled": True,
+            "startTime": None,
+            "endTime": None,
+            "Notes": "",
+            "AllowJoinUs": False
+        })
+
+    print(booking.status_code)
+    print(booking.json())
     # print(cookies)
 
     # list the tee times
