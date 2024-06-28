@@ -6,6 +6,8 @@ daysAfter = 7
 waitForRunTime = True
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM. only applicable if waitForRunTime is enabled
 runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login. only applicable if waitForRunTime is enabled
+enableSMTP = False # receieve email summaries when a tee time is booked, credentials must be configured in logininfo.py
+
 
 import requests
 import json
@@ -94,6 +96,7 @@ def getTeeTime():
     lastName = (currentUser.json()['data'])['lastName']
     memberID = (currentUser.json()['data'])['memberId']
     memberNumber = (currentUser.json()['data'])['memberNumber']
+    memberEmail = (currentUser.json()['data'])['email']
 
     print(firstName + ' ' + lastName)
     print('Member ID: ' + str(memberID))
