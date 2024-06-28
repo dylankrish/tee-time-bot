@@ -1,8 +1,8 @@
 # Config
-waitFor6AM = True
+waitForHour = False # wait for the hour, ex: if the script runs at 5:58 and is set to wait for the hour, it will wait for 6AM
 timeToBook = '11:30' # what time the script should book, ex: 08:30 for 8:30AM
-daysAfter = 6
-waitForRunTime = True
+daysAfter = 7
+waitForRunTime = False
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM
 runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login
 
@@ -25,6 +25,7 @@ def getTeeTime():
     # Login
     import requests
     import json
+    import time
     from selenium import webdriver
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import Select
@@ -34,6 +35,9 @@ def getTeeTime():
     from selenium.webdriver.chrome.service import Service
     from datetime import datetime, timedelta
     from logininfo import username, password
+
+    print("Running")
+
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
@@ -127,8 +131,9 @@ def getTeeTime():
     print('Time: ' + teeTime)
 
     # wait for the hour
-    if datetime.datetime.now().hour != 0 and waitFor6AM:
-        while datetime.datetime.now().hour != 0:
+    if datetime.now().hour != 0 and waitForHour:
+        print('Waiting for hour mark')
+        while datetime.now().hour != 0:
             time.sleep(0.1)    
 
     # proceed booking
