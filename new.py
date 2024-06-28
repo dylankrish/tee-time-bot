@@ -106,10 +106,8 @@ def getTeeTime():
 
     for i in teeTimes:
         if i['teeTime'] == teeTime:
-            if (i['teeSheetBank']['teeSheetKey'])['dateOfAvailability'] == formatted_date_alt:
-                # TODO: check date
-                teeSheetTimeID = i['teeSheetTimeId']
-                break
+            teeSheetTimeID = i['teeSheetTimeId']
+            break
 
 
     if teeSheetTimeID != '':
