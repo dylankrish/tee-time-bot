@@ -1,9 +1,10 @@
 # Config
+waitFor6AM = True
 timeToBook = '11:30' # what time the script should book, ex: 08:30 for 8:30AM
 daysAfter = 6
 waitForRunTime = True
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM
-runTimeM = 58 # ex: 30 for 6:30 AM
+runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login
 
 # Idle until a certain time in the day is reached
 def main():
@@ -124,6 +125,11 @@ def getTeeTime():
     print('Tee Sheet ID: ' + str(teeSheetTimeID))
     print('Date: ' + pretty_date)
     print('Time: ' + teeTime)
+
+    # wait for the hour
+    if datetime.datetime.now().hour != 0 and waitFor6AM:
+        while datetime.datetime.now().hour != 0:
+            time.sleep(0.1)    
 
     # proceed booking
     proceed = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/ProceedBooking/' + str(teeSheetTimeID), cookies=cookies_dict,
