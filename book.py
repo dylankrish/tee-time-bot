@@ -183,10 +183,13 @@ def getTeeTime():
     print("Booking: " + str(booking.status_code))
 
     if booking.status_code == 200:
+        course = (booking.json()['data'])['course']
+        bookingID = (booking.json()['data'])['bookingId']
+        confirmationNumber = (booking.json()['data'])['confirmationNumber']
         print('Booked!')
-        print('Course: ' + (booking.json()['data'])['course'])
-        print('Booking ID: ' + (booking.json()['data'])['bookingId'])
-        print('Confirmation Number' + (booking.json()['data'])['confirmationNumber'])
+        print('Course: ' + course)
+        print('Booking ID: ' + bookingID)
+        print('Confirmation Number' + confirmationNumber)
     else:
         print('Failed to book')
         print(booking.json())
