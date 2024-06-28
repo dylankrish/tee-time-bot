@@ -46,7 +46,7 @@ def main():
 def getTeeTime():
     from logininfo import username, password
 
-    print("Running")
+    print("Running...")
 
     # Login
     options = webdriver.ChromeOptions()
@@ -98,10 +98,8 @@ def getTeeTime():
     memberNumber = (currentUser.json()['data'])['memberNumber']
     memberEmail = (currentUser.json()['data'])['email']
 
-    print(firstName + ' ' + lastName)
+    print('Logged in as ' + firstName + ' ' + lastName)
     print('Member ID: ' + str(memberID))
-    print('Member Number: ' + str(memberNumber))
-
 
     # get available dates from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableDates
 
@@ -140,7 +138,7 @@ def getTeeTime():
 
     print('Tee Sheet ID: ' + str(teeSheetTimeID))
     print('Date: ' + pretty_date)
-    print('Time: ' + teeTime)
+    print('Time: ' + timeToBook)
 
     # wait for the hour
     if datetime.now().hour != 0 and waitForHour:
@@ -202,16 +200,12 @@ Unfortunately there was an error when booking your tee time for {timeToBook}.
             "AllowJoinUs": False
         })
 
-    print("Booking: " + str(booking.status_code))
-
     if booking.status_code == 200:
         course = (booking.json()['data'])['course']
         bookingID = (booking.json()['data'])['bookingId']
         confirmationNumber = (booking.json()['data'])['confirmationNumber']
         print('Booked!')
-        print('Course: ' + str(course))
         print('Booking ID: ' + str(bookingID))
-        print('Confirmation Number' + str(confirmationNumber))
         if enableSMTP:
             import smtplib
             from email.mime.text import MIMEText
