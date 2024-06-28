@@ -1,5 +1,6 @@
 # Config
 waitForHour = False # wait for the hour, ex: if the script runs at 5:58 and is set to wait for the hour, it will wait for 6AM
+waitForWeekend = False # only book on weekends (saturday and sunday)
 timeToBook = '11:30' # what time the script should book, ex: 08:30 for 8:30AM
 daysAfter = 7
 waitForRunTime = False
@@ -21,16 +22,22 @@ from logininfo import username, password
 
 # Idle until a certain time in the day is reached
 def main():
+    if waitForWeekend:
+        # check if today is Saturday (5) or Sunday (6)
+        while True:
+            today = datetime.today().weekday()
+            if today in (5, 6):
+                break
+            else:
+                time.sleep(7200)
     if waitForRunTime:
-        import time
-        import datetime
         print('Waiting for ' + str(runTimeH) + ':' + str(runTimeM))
         while True:
             now = datetime.datetime.now()
             if now.hour == runTimeH and now.minute == runTimeM:
                 getTeeTime()
             else:
-                time.sleep(5)
+                time.sleep(10)
     else:
         getTeeTime()
 
