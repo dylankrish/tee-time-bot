@@ -103,7 +103,7 @@ def getTeeTime():
     for i in teeTimes:
         print(i)
         if i['teeTime'] == teeTime:
-            # TODO: backtrack to teeSheetTimeID
+            # TODO: check date
             teeSheetTimeID = i['teeSheetTimeId']
             break
 
