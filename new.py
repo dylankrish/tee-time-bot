@@ -23,13 +23,14 @@ def getTeeTime():
     from selenium.webdriver.support import expected_conditions as EC
     from selenium.webdriver import ActionChains
     from selenium.webdriver.chrome.service import Service
-    from datetime import datetime
+    from datetime import datetime, timedelta
     from logininfo import username, password
     # course id is 1548
     teeTime = '08:00:00'
+    daysAfter = 7
 
     options = webdriver.ChromeOptions()
-    options.add_argument("--enable-features=WebContentsForceDark")
+    options.add_argument("--headless")
 
     driver = webdriver.Chrome(options=options)
 
@@ -46,6 +47,7 @@ def getTeeTime():
 
     # cookies = response.cookies
     driver.get(login_url)
+    print('Logging in...')
 
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, 'p_lt_PageContent_pageplaceholder_p_lt_zoneRight_CHOLogin_LoginControl_ctl00_Login1_UserName')))
 
@@ -86,7 +88,9 @@ def getTeeTime():
     # print(availabledates.json())
 
     current_date = datetime.now()
-    formatted_date = current_date.strftime("%Y%m%d")
+    days_later = current_date + timedelta(days=daysAfter)
+    formatted_date = days_later.strftime("%Y%m%d")
+    formatted_date_alt = days_later.strftime('%Y-%m-%dT06:00:00')
     # print(formatted_date)
 
     # get available teetimes from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20240625/1548;1657/0/null/false
@@ -103,11 +107,13 @@ def getTeeTime():
     for i in teeTimes:
         print(i)
         if i['teeTime'] == teeTime:
-            # TODO: check date
-            teeSheetTimeID = i['teeSheetTimeId']
-            break
+            if (i['teeSheetKey'])['dateOfAvailability'] == formatted_date_alt:
+                # TODO: check date
+                teeSheetTimeID = i['teeSheetTimeId']
+                break
 
-    print('Found: ' + str(teeSheetTimeID))
+    print('Found tee time!')
+    print('Tee Sheet ID: ' + str(teeSheetTimeID))
 
     # print(cookies)
 
