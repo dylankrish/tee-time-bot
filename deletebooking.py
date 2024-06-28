@@ -43,7 +43,13 @@ for cookie in selenium_cookies:
 driver.close()
 # END LOGIN
 
-print(requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/DeleteBooking/' + bookingid, cookies=cookies_dict, 
+delete = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/DeleteBooking/' + bookingid, cookies=cookies_dict, 
     headers={
         'referer': 'https://www.stoningtoncountryclub.com/CMSModules/CHO/TeeTimes/TeeTimes.aspx'
-    }).status_code)
+    })
+
+if delete.status_code == 200:
+    print('OK')
+else:
+    print(delete.status_code)
+    print(delete.json())
