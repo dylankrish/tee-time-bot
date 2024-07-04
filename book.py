@@ -7,6 +7,7 @@ waitForRunTime = False
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM. only applicable if waitForRunTime is enabled
 runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login. only applicable if waitForRunTime is enabled
 enableSMTP = True # receieve email summaries when a tee time is booked, credentials must be configured in logininfo.py
+emailAddress = "" # email address to send an email to, ex: yourname@gmail.com
 
 
 import requests
@@ -171,7 +172,7 @@ Unfortunately there was an error when booking your tee time for {timeToBook}.
             server = smtplib.SMTP(smtpServer,smtpPort)
             server.starttls()
             server.login(smtpUser,smtpPswd)
-            server.sendmail(smtpUser,memberEmail,msg.as_string())
+            server.sendmail(smtpUser,emailAddress,msg.as_string())
             server.quit()
 
     booking = requests.post('https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0', cookies=cookies_dict,
@@ -230,7 +231,7 @@ Booking ID: {bookingID}
             server = smtplib.SMTP(smtpServer,smtpPort)
             server.starttls()
             server.login(smtpUser,smtpPswd)
-            server.sendmail(smtpUser,memberEmail,msg.as_string())
+            server.sendmail(smtpUser,emailAddress,msg.as_string())
             server.quit()
     else:
         print('Failed to book')
@@ -255,7 +256,7 @@ Unfortunately there was an error when booking your tee time for {timeToBook}.
             server = smtplib.SMTP(smtpServer,smtpPort)
             server.starttls()
             server.login(smtpUser,smtpPswd)
-            server.sendmail(smtpUser,memberEmail,msg.as_string())
+            server.sendmail(smtpUser,emailAddress,msg.as_string())
             server.quit()
 
 
