@@ -6,7 +6,7 @@ daysAfter = 7
 waitForRunTime = True
 runTimeH = 5 # when the script should run, ex: 6 for 6:00 AM. only applicable if waitForRunTime is enabled
 runTimeM = 58 # ex: 58 for 5:58 AM, keep this two minutes before to allow time to login. only applicable if waitForRunTime is enabled
-enableSMTP = True # receieve email summaries when a tee time is booked, credentials must be configured in logininfo.py
+enableSMTP = False # receieve email summaries when a tee time is booked, credentials must be configured in logininfo.py
 emailAddress = "" # email address to send an email to, ex: yourname@gmail.com
 
 
