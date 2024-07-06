@@ -156,24 +156,6 @@ def getTeeTime():
     if proceed.status_code != 200:
         print('Failed to proceed')
         proceed.json()
-        if enableSMTP:
-            import smtplib
-            from email.mime.text import MIMEText
-            from email.mime.multipart import MIMEMultipart
-            from email.mime.application import MIMEApplication
-            from logininfo import smtpUser, smtpPswd, smtpServer, smtpPort
-            message = f"""
-Unfortunately there was an error when booking your tee time for {timeToBook}.
-
-"{errorMessage}"
-            """
-
-            msg.attach(MIMEText(message, 'plain'))
-            server = smtplib.SMTP(smtpServer,smtpPort)
-            server.starttls()
-            server.login(smtpUser,smtpPswd)
-            server.sendmail(smtpUser,emailAddress,msg.as_string())
-            server.quit()
 
     booking = requests.post('https://www.stoningtoncountryclub.com/api/v1/teetimes/CommitBooking/0', cookies=cookies_dict,
         headers={
@@ -234,7 +216,7 @@ Booking ID: {bookingID}
             server.sendmail(smtpUser,emailAddress,msg.as_string())
             server.quit()
     else:
-        print('Failed to book')
+        print('Failed to s')
         print(booking.json())
         errorMessage = (booking.json())['errorMessage']
         if enableSMTP:
@@ -244,7 +226,7 @@ Booking ID: {bookingID}
             from email.mime.application import MIMEApplication
             from logininfo import smtpUser, smtpPswd, smtpServer, smtpPort
             message = f"""
-Unfortunately there was an error when booking your tee time for {timeToBook}.
+Failed to book tee time for {timeToBook}.
 
 "{errorMessage}"
             """
