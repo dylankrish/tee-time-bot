@@ -130,7 +130,7 @@ def getTeeTime():
     if teeSheetTimeID != '':
         print('Found tee time!')
     else:
-        print('Could not find tee time')
+        raise Exception('Could not find tee time')
         exit()
 
 
