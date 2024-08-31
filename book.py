@@ -117,7 +117,7 @@ def getTeeTime():
         })
     teeTimes = (available_teetimes.json()['data'])['teeSheet']
 
-    # print(teeTimes)
+    print(teeTimes)
 
     teeSheetTimeID = ''
 
