@@ -103,6 +103,12 @@ def getTeeTime():
     pretty_date = days_later.strftime('%A, %B %d')
     # print(formatted_date)
 
+    # wait for the hour before finding tee times
+    if datetime.now().hour != 0 and waitForHour:
+        print('Waiting for hour mark')
+        while datetime.now().hour != 0:
+            time.sleep(0.1)
+
     # get available teetimes from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20240625/1548;1657/0/null/false
     available_teetimes = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/' + formatted_date + '/1548/0/null/false', cookies=cookies_dict,
         headers={
@@ -130,12 +136,6 @@ def getTeeTime():
     print('Tee Sheet ID: ' + str(teeSheetTimeID))
     print('Date: ' + pretty_date)
     print('Time: ' + timeToBook)
-
-    # wait for the hour
-    if datetime.now().hour != 0 and waitForHour:
-        print('Waiting for hour mark')
-        while datetime.now().hour != 0:
-            time.sleep(0.1)    
 
     # proceed booking
     proceed = requests.get('https://www.stoningtoncountryclub.com/api/v1/teetimes/ProceedBooking/' + str(teeSheetTimeID), cookies=cookies_dict,
