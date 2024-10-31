@@ -102,9 +102,9 @@ def getTeeTime():
     # print(formatted_date)
 
     # wait for the hour before finding tee times
-    if datetime.now().hour != 0 and waitForHour:
+    if datetime.now().minute != 0 and waitForHour:
         print('Waiting for hour mark')
-        while datetime.now().hour != 0:
+        while datetime.now().minute != 0:
             time.sleep(0.1)
 
     # get available teetimes from https://www.stoningtoncountryclub.com/api/v1/teetimes/GetAvailableTeeTimes/20240625/1548;1657/0/null/false
