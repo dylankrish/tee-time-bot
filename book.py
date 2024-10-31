@@ -18,8 +18,7 @@ def main():
         print('Waiting for the weekend')
         # check if today is Saturday (5) or Sunday (6)
         while True:
-            today = datetime.today().weekday()
-            if today in (5, 6):
+            if datetime.today().weekday() in (5, 6):
                 break
             else:
                 time.sleep(7200)
