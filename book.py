@@ -12,6 +12,8 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime, timedelta
 
+print('Initialized, current time is ' + str(datetime.now().hour) + ":" + str(datetime.now().minute))
+
 # Idle until a certain time in the day is reached
 def main():
     if waitForWeekend:
