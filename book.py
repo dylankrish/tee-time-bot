@@ -37,7 +37,7 @@ def main():
 def getTeeTime():
     from logininfo import username, password
 
-    print("Running...")
+    print("Running, current time is " + str(datetime.now().hour) + ":" + str(datetime.now().minute))
 
     # Login
     options = webdriver.ChromeOptions()
