@@ -26,8 +26,7 @@ def main():
     if waitForRunTime:
         print('Waiting for ' + str(runTimeH) + ':' + str(runTimeM))
         while True:
-            now = datetime.now()
-            if now.hour == runTimeH and now.minute == runTimeM:
+            if datetime.now().hour == runTimeH and datetime.now().minute == runTimeM:
                 getTeeTime()
             else:
                 time.sleep(10)
