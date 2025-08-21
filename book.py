@@ -120,6 +120,7 @@ def getTeeTime():
 
     teeSheetTimeID = ''
 
+    # loop through the tee times to find the correct one
     for i in teeTimes:
         if i['teeTime'] == teeTime:
             teeSheetTimeID = i['teeSheetTimeId']
