@@ -1,0 +1,15 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: Pull latest changes on SCC node
+    image: appleboy/drone-ssh
+    settings:
+      host: 10.1.1.156
+      username: dylank
+      key: 
+        from_secret: ssh_private_key
+      port: 22
+      script:
+        - cd /home/dylank/scc-bot
+        - git pull
